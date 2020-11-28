@@ -1,0 +1,163 @@
+
+/* The password is 'angel'. Using the following command we get " $1$/4dbUWBA$jm155Xn5/oz69vwnmCVuJ. " which is the decrypted password angel. We save it into a file
+in Desktop and then with the "sudo john /home/christina/Desktop/pass1 " command  we decrypted our password. Then with "sudo john --show /home/christina/Desktop/pass1"
+command we have in our screens the decrypted password. 
+We use the same steps with salt. */
+
+christina@kalli:~/Desktop$ openssl passwd -1 angel
+$1$/4dbUWBA$jm155Xn5/oz69vwnmCVuJ.
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/pass1
+[sudo] password for christina: 
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+angel            (?)
+1g 0:00:00:01 DONE 2/3 (2020-11-25 07:46) 0.5319g/s 204.2p/s 204.2c/s 204.2C/s 123456..larry
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/pass1
+?:angel
+
+1 password hash cracked, 0 left
+
+
+
+
+/* In command : openssl passwd -1 -salt christina angel , the 'christina' is the salt we choose. We can choose any salt we want, you can spot in in the next 
+examples*/
+
+
+
+christina@kalli:~/Desktop$ openssl passwd -1 -salt christina angel 
+$1$christin$nR3/CberUhGW3snkda/5z0
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/passsalt1
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+angel            (?)
+1g 0:00:00:00 DONE 2/3 (2020-11-25 07:48) 20.00g/s 7680p/s 7680c/s 7680C/s 123456..larry
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/passsalt1
+?:angel
+
+1 password hash cracked, 0 left
+
+
+
+christina@kalli:~/Desktop$ openssl passwd -1 superman
+$1$Bny8p5dp$QX/jSiiNgEe8V36yDhiK8.
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/pass2
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+superman         (?)
+1g 0:00:00:00 DONE 2/3 (2020-11-25 07:50) 25.00g/s 9600p/s 9600c/s 9600C/s 123456..larry
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/pass2
+?:superman
+
+1 password hash cracked, 0 left
+
+
+
+christina@kalli:~/Desktop$ openssl passwd -1 -salt hello superman
+$1$hello$56Xwqm3y9vmygwYzGsflZ/
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/passsalt2
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+superman         (?)
+1g 0:00:00:00 DONE 2/3 (2020-11-25 07:52) 25.00g/s 9600p/s 9600c/s 9600C/s 123456..larry
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/passsalt2
+?:superman
+
+1 password hash cracked, 0 left
+
+
+
+christina@kalli:~/Desktop$ openssl passwd -1 -salt food213 12345678910
+$1$food213$h3VznOygmQa4Z3FcLQuOa.
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/pass3
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+12345678910      (?)
+1g 0:00:00:00 DONE 2/3 (2020-11-25 07:54) 10.00g/s 23040p/s 23040c/s 23040C/s 1234qwer..karla
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/pass3
+?:12345678910
+
+1 password hash cracked, 0 left
+
+
+
+christina@kalli:~/Desktop$ openssl passwd -1 12345678910
+$1$C/rGMQjX$D92X5GbqOfjnKBq22j8cu/
+
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/pass3num
+Using default input encoding: UTF-8
+No password hashes loaded (see FAQ)
+christina@kalli:~/Desktop$ sudo john /home/christina/Desktop/pass3num
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+12345678910      (?)
+1g 0:00:00:00 DONE 2/3 (2020-11-25 07:56) 11.11g/s 25600p/s 25600c/s 25600C/s 1234qwer..karla
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+
+christina@kalli:~/Desktop$ sudo john --show /home/christina/Desktop/pass3num
+?:12345678910
+
+1 password hash cracked, 0 left
+
+
